@@ -1,7 +1,8 @@
-# BlueTrain AI, Inc. — Website
+# BlueTrain — Website
 
 Marketing site for BlueTrain AI, Inc. — workflow automation, accounting transformation,
-data intelligence, and AI implementation.
+data intelligence, and AI implementation. The company is referred to as **BlueTrain**
+throughout the site; the full legal name appears only in the footer.
 
 Static HTML, CSS, and vanilla JavaScript. No build step, no dependencies — the repository
 root *is* the site, which is what makes it a clean fit for GitHub Pages.
@@ -22,19 +23,38 @@ root *is* the site, which is what makes it a clean fit for GitHub Pages.
 Shared assets live in `assets/css/styles.css`, `assets/js/main.js`, and
 `assets/img/favicon.svg`.
 
-## Brand palette
+## Design language
 
-<https://coolors.co/03045e-0077b6-00b4d8-90e0ef-caf0f8>
+Flat colour, hairline rules, editorial serif headlines, monospaced labels. No gradients
+and no drop shadows — structure comes from 1px "lattice" grids and generous whitespace.
+
+### Palette
+
+<https://coolors.co/054a91-3e7cb1-81a4cd-dbe4ee-f17300>
 
 | Token | Hex | Used for |
 | --- | --- | --- |
-| `--navy` | `#03045E` | Headings, dark sections, footer |
-| `--blue` | `#0077B6` | Links, eyebrows, primary gradient |
-| `--cyan` | `#00B4D8` | Accents, focus rings, CTA gradient |
-| `--sky` | `#90E0EF` | Body copy on dark, icon fills |
-| `--ice` | `#CAF0F8` | Tinted section backgrounds |
+| `--blue` | `#054A91` | Primary buttons, dark bands, logo mark |
+| `--blue-mid` | `#3E7CB1` | Meters, secondary marks |
+| `--blue-soft` | `#81A4CD` | Labels on dark, footer headings |
+| `--blue-pale` | `#DBE4EE` | Tag borders, meter tracks |
+| `--accent` | `#F17300` | The single accent: header rule, list markers, nav underline, focus ring, step numbers |
+
+Plus neutrals: `--paper` `#FBFAF7` (warm page ground), `--paper-alt` `#F3F0E9`,
+`--ink` `#10202F`, and `--rule` `#E2DED5` for every hairline. `--blue-deep` `#033663` is a
+darkened shade of the brand blue, used only for the footer.
 
 All tokens are defined once at the top of `assets/css/styles.css`.
+
+### Typography
+
+| Family | Role |
+| --- | --- |
+| **Newsreader** | Page and section headlines, footer tagline, step numerals |
+| **IBM Plex Sans** | Body copy, component titles, buttons, navigation |
+| **IBM Plex Mono** | Eyebrows, labels, breadcrumbs, form labels, footer meta |
+
+Loaded from Google Fonts with system fallbacks in the `--serif` / `--sans` / `--mono` tokens.
 
 ## Deploying to GitHub Pages
 
@@ -99,6 +119,10 @@ python3 -m http.server 8000
 
 - The header and footer are duplicated in each HTML file (the cost of having no build step).
   If you change one, change it everywhere — `index.html` is the reference copy.
-- Sections tagged `class="reveal"` fade in on scroll via `IntersectionObserver`, and the
-  effect is disabled automatically under `prefers-reduced-motion`.
+- Sections tagged `class="reveal"` fade in on scroll via `IntersectionObserver`. Hero
+  content uses a CSS-only staggered load cascade instead (`.stagger`). Both are disabled
+  automatically under `prefers-reduced-motion`.
+- `.lattice` grids draw their hairlines with a 1px grid gap over a rule-coloured
+  background, so **cell counts must fill each row exactly** at every breakpoint — an
+  orphaned grid area renders as a solid block of the rule colour.
 - Navigation highlights the current page with `aria-current="page"`.
