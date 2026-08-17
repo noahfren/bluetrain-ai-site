@@ -20,8 +20,23 @@ root *is* the site, which is what makes it a clean fit for GitHub Pages.
 | `contact.html` | Contact form and assessment request |
 | `404.html` | Not-found page (served automatically by GitHub Pages) |
 
-Shared assets live in `assets/css/styles.css`, `assets/js/main.js`, and
-`assets/img/favicon.svg`.
+Shared assets live in `assets/css/styles.css` and `assets/js/main.js`.
+
+### Logo
+
+The mark is a railway track in plan view — two rails crossed by three ties, the last tie
+in the accent orange. It was chosen over more literal train imagery because it stays
+legible down to a 20px favicon, where perspective or diagonal treatments turn to mush.
+
+| File | Use |
+| --- | --- |
+| `assets/img/logo-mark.svg` | White rails on brand blue — light backgrounds |
+| `assets/img/logo-mark-invert.svg` | Blue rails on white — dark backgrounds (footer) |
+| `assets/img/favicon.svg` | Browser tab icon, same drawing as the primary mark |
+
+In the pages the mark is inlined rather than linked, so it inherits no extra request; the
+header uses the primary treatment and the footer the inverted one. Change one and change
+all fourteen — `index.html` is the reference copy.
 
 ## Design language
 

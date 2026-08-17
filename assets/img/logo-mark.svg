@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="BlueTrain">
+  <title>BlueTrain</title>
   <rect width="32" height="32" fill="#054a91"/>
   <path d="M9 9v14M16 9v14" stroke="#81a4cd" stroke-width="1.7"/>
   <path d="M23 9v14" stroke="#f17300" stroke-width="1.7"/>
