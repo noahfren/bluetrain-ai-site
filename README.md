@@ -58,27 +58,27 @@ Loaded from Google Fonts with system fallbacks in the `--serif` / `--sans` / `--
 
 ## Deploying to GitHub Pages
 
-Two options — pick one.
+Pages is configured through **Settings → Pages → Source → Deploy from a branch**, set to
+`main` and the `/ (root)` folder. GitHub's built-in `pages build and deployment` job
+publishes the site on every push to `main` — there is no workflow in this repository and
+nothing to maintain. `.nojekyll` is committed so Jekyll processing is skipped and files
+or folders beginning with `_` are served as-is.
 
-### Option A: GitHub Actions (recommended, already configured)
+The site is live at `https://<owner>.github.io/<repo>/`.
 
-`.github/workflows/deploy.yml` publishes the repository root on every push to `main`.
-The `configure-pages` step runs with `enablement: true`, so it turns Pages on through
-the API on the first run — you should not need to touch **Settings → Pages** at all.
+Note that this is a project site served from a subpath, not a domain root. Every link and
+asset reference is relative, so it works there unchanged — including `404.html`.
 
-The site will be live at `https://<owner>.github.io/<repo>/`.
+> An Actions workflow (`actions/upload-pages-artifact` + `actions/deploy-pages`) is the
+> other way to publish, and it becomes worthwhile if this site ever grows a build step.
+> It buys nothing while the repository root *is* the deployable site, and running it
+> alongside branch-based deployment means two jobs publishing the same files. If you do
+> switch, set **Source** to **GitHub Actions** — a workflow cannot enable Pages for you,
+> since `GITHUB_TOKEN` lacks the admin rights the create-site API requires.
 
 > **Private repositories need a paid plan.** GitHub Pages is only available for private
-> repos on GitHub Pro, Team, or Enterprise. On the Free plan the deploy fails at the
-> "Configure Pages" step no matter how the workflow is written — make the repository
-> public, or upgrade the account.
-
-### Option B: Deploy from a branch (no Actions)
-
-**Settings → Pages → Source → Deploy from a branch**, then choose `main` and the `/ (root)`
-folder. `.nojekyll` is committed so Jekyll processing is skipped and files or folders
-beginning with `_` are served as-is. The same paid-plan requirement applies to private
-repositories.
+> repos on GitHub Pro, Team, or Enterprise. This repository is public, so the free plan
+> covers it.
 
 ### Custom domain
 
