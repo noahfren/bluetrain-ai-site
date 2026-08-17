@@ -440,6 +440,7 @@ strong {
   font-size: 0.95rem;
   font-weight: 550;
   color: var(--body);
+  white-space: nowrap;
 }
 
 .nav a::after {
@@ -638,7 +639,7 @@ strong {
 
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
 }
