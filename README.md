@@ -63,19 +63,22 @@ Two options — pick one.
 ### Option A: GitHub Actions (recommended, already configured)
 
 `.github/workflows/deploy.yml` publishes the repository root on every push to `main`.
-
-1. Merge this branch into `main`.
-2. In the repository, go to **Settings → Pages → Build and deployment**.
-3. Set **Source** to **GitHub Actions**.
-4. Push to `main` (or run the workflow manually from the **Actions** tab).
+The `configure-pages` step runs with `enablement: true`, so it turns Pages on through
+the API on the first run — you should not need to touch **Settings → Pages** at all.
 
 The site will be live at `https://<owner>.github.io/<repo>/`.
+
+> **Private repositories need a paid plan.** GitHub Pages is only available for private
+> repos on GitHub Pro, Team, or Enterprise. On the Free plan the deploy fails at the
+> "Configure Pages" step no matter how the workflow is written — make the repository
+> public, or upgrade the account.
 
 ### Option B: Deploy from a branch (no Actions)
 
 **Settings → Pages → Source → Deploy from a branch**, then choose `main` and the `/ (root)`
 folder. `.nojekyll` is committed so Jekyll processing is skipped and files or folders
-beginning with `_` are served as-is.
+beginning with `_` are served as-is. The same paid-plan requirement applies to private
+repositories.
 
 ### Custom domain
 
